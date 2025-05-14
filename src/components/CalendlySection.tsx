@@ -1,5 +1,4 @@
 'use client'
-import { useState } from 'react'
 import { InlineWidget } from 'react-calendly'
 
 export default function CalendlySection() {

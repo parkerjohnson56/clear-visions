@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 const images = [
   'denise-2.JPG',
@@ -20,9 +21,11 @@ export default function MagicalImageReel() {
       >
         {allImages.map((img, i) => (
           <div key={i} className="flex-shrink-0 w-40 h-40 rounded-2xl overflow-hidden shadow-lg bg-white/70 border-2 border-pink-100">
-            <img
+            <Image
               src={`/${img}`}
               alt="Magical reel"
+              width={160}
+              height={160}
               className="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-300"
             />
           </div>

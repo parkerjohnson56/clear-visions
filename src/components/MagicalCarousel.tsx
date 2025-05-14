@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import Image from 'next/image';
 
 const images = [
   'denise-2.JPG',
@@ -17,10 +18,11 @@ export default function MagicalCarousel() {
   return (
     <div className="relative flex flex-col items-center">
       <div className="relative w-full max-w-4xl h-64 md:h-96 flex items-center justify-center">
-        <img
+        <Image
           src={`/${images[index]}`}
           alt="Magical carousel"
-          className="w-full h-full object-cover rounded-3xl shadow-2xl border-4 border-pink-100 bg-white/60 transition-all duration-500"
+          fill
+          className="object-cover rounded-3xl shadow-2xl border-4 border-pink-100 bg-white/60 transition-all duration-500"
           style={{ boxShadow: '0 0 60px 20px rgba(168,85,247,0.18), 0 0 120px 40px rgba(236,72,153,0.10)' }}
         />
         {/* Magical glow and sparkles */}

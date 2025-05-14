@@ -10,10 +10,12 @@ export default function Home() {
       {/* Hero Section (starts below nav) */}
       <section className="h-screen w-screen relative pt-24 -mt-6 px-2 sm:px-0">
         <div className="absolute left-0 right-0 top-24 bottom-0 z-0">
-          <img
+          <Image
             src="/hero-img.jpg"
             alt="Mystical background"
-            className="w-full h-full object-cover"
+            fill
+            priority
+            className="object-cover"
           />
         </div>
         {/* Magical Gradient Overlay */}
@@ -50,9 +52,11 @@ export default function Home() {
       <section id="about" className="py-16 md:py-28 bg-gradient-to-br from-pink-100 via-white to-purple-100 relative overflow-hidden px-2 sm:px-0">
         <div className="container mx-auto px-2 sm:px-4 flex flex-col md:flex-row items-center gap-10 md:gap-32 relative z-20">
           <div className="relative flex-shrink-0 mb-8 md:mb-0">
-            <img
+            <Image
               src="/denise.JPG"
               alt="Denise, owner of Clearvisions"
+              width={320}
+              height={420}
               className="w-48 h-60 sm:w-64 sm:h-80 md:w-80 md:h-[28rem] rounded-3xl border-4 border-pink-200 shadow-lg object-cover mx-auto animate-fade-in"
               style={{ boxShadow: '0 0 24px 6px rgba(168,85,247,0.10), 0 0 48px 12px rgba(236,72,153,0.08)' }}
             />
@@ -61,7 +65,7 @@ export default function Home() {
           <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left max-w-3xl w-full px-2">
             <span className="text-5xl md:text-6xl font-playfair text-purple-700 mb-2 animate-fade-in">Denise</span>
             <span className="text-2xl md:text-3xl font-[cursive] text-pink-400 mb-4 animate-fade-in-delay">Clearvisions</span>
-            <blockquote className="italic text-lg text-purple-500 mb-6 animate-fade-in-delay-2">“Step into a world of wonder, healing, and spiritual discovery.”</blockquote>
+            <blockquote className="italic text-lg text-purple-500 mb-6 animate-fade-in-delay-2">&quot;Step into a world of wonder, healing, and spiritual discovery.&quot;</blockquote>
             <h3 className="text-xl md:text-2xl font-semibold text-purple-500 mb-4 animate-fade-in-delay-2">As seen on TV, three years in a row!</h3>
             <div className="max-w-2xl">
               <p className="text-lg text-gray-700 leading-relaxed mb-4 animate-fade-in-delay-2">
@@ -72,7 +76,7 @@ export default function Home() {
               </p>
               <div className="bg-white/70 rounded-xl p-4 mt-4 shadow-md border border-pink-100 animate-fade-in-delay-2">
                 <span className="block text-pink-500 font-semibold mb-2">Client Experience</span>
-                <p className="text-gray-700 italic">“Denise's readings are like a warm embrace from the universe. I left feeling lighter, inspired, and truly seen.”</p>
+                <p className="text-gray-700 italic">&quot;Denise&apos;s readings are like a warm embrace from the universe. I left feeling lighter, inspired, and truly seen.&quot;</p>
               </div>
             </div>
           </div>
