@@ -1,5 +1,5 @@
 module.exports = {
-  purge: [
+  content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
@@ -8,21 +8,30 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        purple: {
-          50: '#faf5ff',
-          100: '#f3e8ff',
-          200: '#e9d5ff',
-          300: '#d8b4fe',
-          400: '#c084fc',
-          500: '#a855f7',
-          600: '#9333ea',
-          700: '#7e22ce',
-          800: '#6b21a8',
-          900: '#581c87',
+        ink: {
+          DEFAULT: '#0d0b09',
+          50: '#1a1714',
+          100: '#221f1a',
+          200: '#2e2a24',
+        },
+        gold: {
+          DEFAULT: '#c9a25c',
+          light: '#e8cc7a',
+          dim: '#8a6a30',
+          faint: 'rgba(201,162,92,0.15)',
+          subtle: 'rgba(201,162,92,0.25)',
+          border: 'rgba(201,162,92,0.35)',
+        },
+        parchment: {
+          DEFAULT: '#f2e8d0',
+          muted: '#c4b090',
+          dim: '#8a7a60',
         },
       },
       fontFamily: {
         playfair: ['"Playfair Display"', 'serif'],
+        cormorant: ['"Cormorant Garamond"', 'serif'],
+        lora: ['Lora', 'serif'],
         quicksand: ['Quicksand', 'sans-serif'],
       },
     },
@@ -31,4 +40,4 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-} 
+}

@@ -1,104 +1,132 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { 
-  Bars3Icon, 
-  XMarkIcon,
-  SparklesIcon,
-  BookOpenIcon,
-  UserGroupIcon,
-  CalendarIcon
-} from '@heroicons/react/24/outline'
+import { Menu, X, Calendar, BookOpen, User, Sparkles } from 'lucide-react'
 
-const navigation = [
-  { name: 'Home', href: '/', icon: SparklesIcon },
-  { name: 'Services', href: '#services', icon: BookOpenIcon },
-  { name: 'About', href: '#about', icon: UserGroupIcon },
-  { name: 'Book Now', href: '#book-now', icon: CalendarIcon },
+const navLinks = [
+  { name: 'About', href: '#about', icon: User },
+  { name: 'Services', href: '#services', icon: BookOpen },
+  { name: 'Gallery', href: '#gallery', icon: Sparkles },
 ]
 
 export default function Navigation() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
-    <header className="fixed inset-x-0 top-0 z-[100] bg-white backdrop-blur-md border-b border-purple-200 shadow-lg shadow-purple-200/20">
-      <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
-        <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5 group">
-            <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-400 bg-clip-text text-transparent group-hover:from-purple-400 group-hover:to-purple-600 transition-all duration-300">
-              Clearvisions
-            </span>
-          </Link>
-        </div>
-        <div className="flex lg:hidden">
-          <button
-            type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-purple-600"
-            onClick={() => setMobileMenuOpen(true)}
-          >
-            <span className="sr-only">Open main menu</span>
-            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-          </button>
-        </div>
-        <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map((item) => (
+    <header
+      className="fixed inset-x-0 top-0 z-50 transition-all duration-500"
+      style={{
+        backgroundColor: scrolled ? 'rgba(13,11,9,0.96)' : 'transparent',
+        borderBottom: scrolled ? '1px solid rgba(201,162,92,0.18)' : '1px solid transparent',
+      }}
+    >
+      <nav className="flex items-center justify-between px-6 py-4 lg:px-14">
+        {/* Logo */}
+        <Link href="/" className="group">
+          <span className="font-playfair text-2xl tracking-wide text-gold group-hover:text-gold-light transition-colors duration-300">
+            Clearvisions
+          </span>
+        </Link>
+
+        {/* Desktop links */}
+        <div className="hidden lg:flex items-center gap-10">
+          {navLinks.map(({ name, href, icon: Icon }) => (
             <Link
-              key={item.name}
-              href={item.href}
-              className="group flex items-center gap-2 text-sm font-semibold leading-6 text-gray-900 hover:text-purple-600 transition-colors"
+              key={name}
+              href={href}
+              className="flex items-center gap-1.5 font-lora text-sm tracking-wider text-parchment-muted hover:text-gold transition-colors duration-300"
             >
-              <item.icon className="h-5 w-5 group-hover:animate-pulse" />
-              {item.name}
+              <Icon size={14} />
+              {name}
             </Link>
           ))}
         </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+
+        {/* Book Now CTA */}
+        <div className="hidden lg:block">
           <Link
             href="#book-now"
-            className="group flex items-center gap-2 text-sm font-semibold leading-6 text-white bg-purple-600 px-4 py-2 rounded-full hover:bg-purple-700 transition-all hover:scale-105"
+            className="flex items-center gap-2 font-lora text-sm tracking-widest uppercase text-white px-6 py-2 rounded-full bg-gold transition-all duration-300 hover:bg-gold-light"
+            style={{ boxShadow: '0 0 16px rgba(201,162,92,0.32), 0 2px 10px rgba(201,162,92,0.18)' }}
           >
-            <CalendarIcon className="h-5 w-5 group-hover:animate-pulse" />
+            <Calendar size={14} />
             Book Now
           </Link>
         </div>
+
+        {/* Mobile hamburger */}
+        <button
+          className="lg:hidden text-gold p-2"
+          onClick={() => setMobileOpen(true)}
+          aria-label="Open menu"
+        >
+          <Menu size={22} />
+        </button>
       </nav>
-      <div className={`lg:hidden ${mobileMenuOpen ? 'fixed inset-0 z-[9999] border-4 border-red-500 bg-red-100/30' : 'hidden'}`}>
-        <div className="fixed inset-0 z-[9999] bg-gray-900/80 border-4 border-blue-500" aria-hidden="true" />
-        <div className="fixed inset-y-0 right-0 z-[9999] w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 border-4 border-green-500">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="-m-1.5 p-1.5">
-              <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-400 bg-clip-text text-transparent">
-                Clearvisions
-              </span>
-            </Link>
-            <button
-              type="button"
-              className="-m-2.5 rounded-md p-2.5 text-purple-600"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <span className="sr-only">Close menu</span>
-              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-            </button>
-          </div>
-          <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-gray-500/10">
-              <div className="space-y-2 py-6">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="flex items-center gap-2 -mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-purple-50 hover:text-purple-600"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <item.icon className="h-5 w-5" />
-                    {item.name}
-                  </Link>
-                ))}
+
+      {/* Mobile drawer */}
+      {mobileOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          <div
+            className="absolute inset-0"
+            style={{ backgroundColor: 'rgba(0,0,0,0.65)' }}
+            onClick={() => setMobileOpen(false)}
+          />
+          <div
+            className="absolute inset-y-0 right-0 w-72 px-6 py-8 flex flex-col"
+            style={{
+              backgroundColor: '#0d0b09',
+              borderLeft: '1px solid rgba(201,162,92,0.2)',
+            }}
+          >
+            <div className="flex items-center justify-between mb-10">
+              <span className="font-playfair text-xl text-gold">Clearvisions</span>
+              <button className="text-parchment-dim" onClick={() => setMobileOpen(false)} aria-label="Close menu">
+                <X size={20} />
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-1">
+              {navLinks.map(({ name, href, icon: Icon }) => (
+                <Link
+                  key={name}
+                  href={href}
+                  className="flex items-center gap-3 px-3 py-3 font-lora text-parchment-muted hover:text-gold transition-colors duration-200"
+                  style={{ borderBottom: '1px solid rgba(201,162,92,0.08)' }}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <Icon size={16} />
+                  {name}
+                </Link>
+              ))}
+              <div className="pt-4">
+                <Link
+                  href="#book-now"
+                  className="flex items-center justify-center gap-2 font-lora text-sm tracking-widest uppercase text-white py-3 rounded-full bg-gold transition-all duration-300"
+                  style={{ boxShadow: '0 0 16px rgba(201,162,92,0.35)' }}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <Calendar size={15} />
+                  Book Now
+                </Link>
               </div>
+            </div>
+
+            <div className="mt-auto">
+              <p className="font-cormorant italic text-sm text-parchment-dim text-center">
+                "Step into a world of wonder."
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </header>
   )
-} 
+}

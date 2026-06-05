@@ -1,5 +1,5 @@
-"use client";
-import Image from "next/image";
+'use client'
+import Image from 'next/image'
 
 const images = [
   'denise-2.JPG',
@@ -7,39 +7,48 @@ const images = [
   'palm-reading2.JPG',
   'palm-readomg.JPG',
   'mirror.JPG',
-];
+]
 
 export default function MagicalImageReel() {
-  // Duplicate images for seamless infinite scroll
-  const allImages = [...images, ...images];
+  const all = [...images, ...images]
 
   return (
     <div className="overflow-x-hidden w-full">
       <div
-        className="flex gap-8 py-6 animate-magical-scroll"
-        style={{ minWidth: '120vw' }}
+        className="flex gap-6 animate-magical-scroll"
+        style={{ width: 'max-content' }}
       >
-        {allImages.map((img, i) => (
-          <div key={i} className="flex-shrink-0 w-40 h-40 rounded-2xl overflow-hidden shadow-lg bg-white/70 border-2 border-pink-100">
+        {all.map((img, i) => (
+          <div
+            key={i}
+            className="flex-shrink-0 relative overflow-hidden"
+            style={{
+              width: 220,
+              height: 280,
+              border: '1px solid rgba(201,162,92,0.35)',
+              boxShadow: '0 4px 24px rgba(0,0,0,0.5)',
+            }}
+          >
+            {/* Gold corner ticks */}
+            <div style={{ position: 'absolute', top: 4, left: 4, width: 10, height: 10, borderTop: '1px solid rgba(201,162,92,0.8)', borderLeft: '1px solid rgba(201,162,92,0.8)', zIndex: 10, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', top: 4, right: 4, width: 10, height: 10, borderTop: '1px solid rgba(201,162,92,0.8)', borderRight: '1px solid rgba(201,162,92,0.8)', zIndex: 10, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', bottom: 4, left: 4, width: 10, height: 10, borderBottom: '1px solid rgba(201,162,92,0.8)', borderLeft: '1px solid rgba(201,162,92,0.8)', zIndex: 10, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', bottom: 4, right: 4, width: 10, height: 10, borderBottom: '1px solid rgba(201,162,92,0.8)', borderRight: '1px solid rgba(201,162,92,0.8)', zIndex: 10, pointerEvents: 'none' }} />
+
             <Image
               src={`/${img}`}
-              alt="Magical reel"
-              width={160}
-              height={160}
-              className="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-300"
+              alt="Gallery"
+              fill
+              className="object-cover transition-transform duration-700 hover:scale-105"
+            />
+            {/* Subtle gold overlay on hover area */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{ background: 'linear-gradient(135deg, rgba(201,162,92,0.06) 0%, transparent 60%)' }}
             />
           </div>
         ))}
       </div>
-      <style jsx global>{`
-        @keyframes magical-scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-magical-scroll {
-          animation: magical-scroll 40s linear infinite;
-        }
-      `}</style>
     </div>
-  );
-} 
+  )
+}

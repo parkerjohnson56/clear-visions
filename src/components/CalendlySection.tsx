@@ -3,26 +3,18 @@ import { InlineWidget } from 'react-calendly'
 
 export default function CalendlySection() {
   return (
-    <div className="w-full h-[700px]">
+    <div className="w-full" style={{ height: 700 }}>
       <InlineWidget
         url="https://calendly.com/your-calendly-url"
-        styles={{
-          height: '100%',
-          width: '100%',
-        }}
-        prefill={{
-          email: '',
-          firstName: '',
-          lastName: '',
-        }}
+        styles={{ height: '100%', width: '100%' }}
         pageSettings={{
-          backgroundColor: 'ffffff',
+          backgroundColor: '1a1714',
           hideEventTypeDetails: false,
           hideLandingPageDetails: false,
-          primaryColor: '6b46c1',
-          textColor: '4a5568',
+          primaryColor: 'c9a25c',
+          textColor: 'f2e8d0',
         }}
       />
     </div>
   )
-} 
+}
