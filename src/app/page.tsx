@@ -210,7 +210,7 @@ export default function Home() {
                 style={{ transformOrigin: 'left', height: 1, background: 'linear-gradient(to right, rgba(201,162,92,0.6), transparent)', marginBottom: '1.25rem' }}
               />
               <motion.blockquote className="font-cormorant italic text-lg sm:text-xl text-parchment-muted leading-relaxed mb-5" variants={fadeUp(0.22)} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-                "Step into a world of wonder, healing, and spiritual discovery."
+                &ldquo;Step into a world of wonder, healing, and spiritual discovery.&rdquo;
               </motion.blockquote>
               <motion.p className="font-lora text-xs tracking-widest uppercase text-gold mb-6" variants={fadeUp(0.28)} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 ✦ &nbsp;As seen on TV, three years in a row

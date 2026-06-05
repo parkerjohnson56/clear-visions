@@ -121,7 +121,7 @@ export default function Navigation() {
 
             <div className="mt-auto">
               <p className="font-cormorant italic text-sm text-parchment-dim text-center">
-                "Step into a world of wonder."
+                &ldquo;Step into a world of wonder.&rdquo;
               </p>
             </div>
           </div>
