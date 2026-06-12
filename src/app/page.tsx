@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Eye, Layers, Hand, Zap, Heart, Activity, Calendar, Star, Quote, Mail, Phone } from 'lucide-react'
+import { Eye, Layers, Hand, Zap, Heart, Activity, Calendar, Star, Quote } from 'lucide-react'
 import MagicalImageReel from '@/components/MagicalImageReel'
 import StatCounter from '@/components/StatCounter'
 import CalendlySection from '@/components/CalendlySection'
