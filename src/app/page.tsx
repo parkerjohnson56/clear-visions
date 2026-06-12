@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { Eye, Layers, Hand, Zap, Heart, Activity, Calendar, Star, Quote, Mail, Phone } from 'lucide-react'
 import MagicalImageReel from '@/components/MagicalImageReel'
 import StatCounter from '@/components/StatCounter'
+import CalendlySection from '@/components/CalendlySection'
 
 const fadeUp = (delay = 0) => ({
   hidden: { opacity: 0, y: 28 },
@@ -290,26 +291,8 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto"
-            variants={fadeUp(0.15)} initial="hidden" whileInView="visible" viewport={{ once: true }}
-          >
-            <a
-              href="mailto:Clearvisions@icloud.com"
-              className="flex items-center justify-center gap-3 font-lora text-sm tracking-wide text-white py-4 px-6 rounded-full bg-gold transition-all duration-300 hover:bg-gold-light"
-              style={{ boxShadow: '0 0 20px rgba(201,162,92,0.32)' }}
-            >
-              <Mail size={16} />
-              Send an Email
-            </a>
-            <a
-              href="tel:5157701615"
-              className="flex items-center justify-center gap-3 font-lora text-sm tracking-wide text-gold py-4 px-6 rounded-full transition-all duration-300"
-              style={{ border: '1px solid rgba(201,162,92,0.55)' }}
-            >
-              <Phone size={16} />
-              (515) 770-1615
-            </a>
+          <motion.div variants={fadeUp(0.15)} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <CalendlySection />
           </motion.div>
         </div>
       </section>
