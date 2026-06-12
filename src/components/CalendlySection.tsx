@@ -5,7 +5,7 @@ export default function CalendlySection() {
   return (
     <div className="w-full" style={{ height: 700 }}>
       <InlineWidget
-        url="https://calendly.com/your-calendly-url"
+        url="https://calendly.com/clearvisions-1/30min"
         styles={{ height: '100%', width: '100%' }}
         pageSettings={{
           backgroundColor: '1a1714',
